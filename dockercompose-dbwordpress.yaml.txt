@@ -1,0 +1,32 @@
+services:
+  db:
+    container_name: "db1"
+    image: "mysql:latest"
+    networks:
+    - dbwp
+    volumes:
+    - /datamysql:/var/lib/mysql
+    environment:
+    - MYSQL_ROOT_PASSWORD='redhat'
+    - MYSQL_DATABASE='dbos1'
+    - MYSQL_USER='swapnil'
+    - MYSQL_PASSWORD='redhat'
+
+  wp:
+    depends_on:
+    - db
+    container_name: "wp1"
+    image: "wordpress:latest"
+    networks:
+    - dbwp
+    ports:
+    - 8080:80
+    environment:
+    - WORDPRESS_DB_HOST='db1'
+    - WORDPRESS_DB_USER='swapnil'
+    - WORDPRESS_DB_PASSWORD='redhat'
+    - WORDPRESS_DB_NAME='dbos1'
+
+networks:
+  dbwp:
+    driver: "bridge"

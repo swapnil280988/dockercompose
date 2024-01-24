@@ -1,0 +1,6 @@
+docker run -dit --name db1 --network dbwp -e MYSQL_ROOT_PASSWORD=redhat -e MYSQL_DATABASE=dbos1 -e MYSQL_USER=swapnil -e MYSQL_PASSWORD=redhat -v /datamysql:/var/lib/mysql mysql:latest
+
+docker run -dit --name wp1 -e WORDPRESS_DB_HOST=db1 -e WORDPRESS_DB_USER=swapnil -e WORDPRESS_DB_PASSWORD=redhat -e WORDPRESS_DB_NAME=dbos1 -- network  dbwp -p 8080:80 wordpress:latest
+
+docker create network dbwp
+
