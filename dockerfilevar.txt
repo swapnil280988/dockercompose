@@ -1,0 +1,15 @@
+FROM centos:7
+
+RUN yum install httpd -y   # RUN is used to run command during build time
+
+COPY index.html /var/www/html   # COPY is used to copy file or tar/zip file to instance during build
+
+ADD <github-url> or file.tar or file.zip  /var/www/html   # ADD is similar to COPY but we can copy content directly from internet or SCM tool, it is also use to copy and untar/unzip file automatically during build itself.
+
+EXPOSE 80   # EXPOSE is use to expose port 80 so that during instance run, we can pass -P only and it will do patting automatically
+
+ENV name=swapnil  # ENV is used to set environment variable same and .bash_profile file during image build
+
+ENTRYPOINT [ "httpd" ]    # it is used as entrypoint or command which need to run while starting
+
+CMD [ "-DFOREGROUND" ]    # used as an argument to ENTRYPOINT and we can overwrite through command line
