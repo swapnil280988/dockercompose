@@ -1,5 +1,5 @@
 # docker swarm init --advertise-addr 172.31.36.202    = Run on master/leader node
-# docker swarm join --token SWMTKN-1-3m9505zmcxl5kh8mhn8hlrix102nmj3qyn1r3e71rvk4rve5dq-3aembz1ug2ul6k4c2xlaf5udd 172.31.36.202:2377 = Run on worker/slave node
+# docker swarm join --token <token-value> 172.31.36.202:2377 = Run on worker/slave node
 
 [root@ip-172-31-36-202 ~]# docker node ls
 ID                            HOSTNAME                                       STATUS    AVAILABILITY   MANAGER STATUS   ENGINE VERSION
