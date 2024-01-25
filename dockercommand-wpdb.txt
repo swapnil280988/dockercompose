@@ -4,3 +4,20 @@ docker run -dit --name wp1 -e WORDPRESS_DB_HOST=db1 -e WORDPRESS_DB_USER=swapnil
 
 docker create network dbwp
 
+########
+
+docker run -dit --name os1 --memory 40M centos:7  ### help to restrict memory
+
+lsns  # used to check the namespace available in Linux
+
+--> docker container isolates namespaces for network, PID, mount(mnt), hostname (uts), ipc 
+    docker container shared the OS resources such as memory, RAM, CPU 
+
+--> docker runs as process and it creates PID directory under /proc folder and softlink for root is created with images files.
+
+ cd /proc   --> folder is created for all processes --> root folder has softlink with "/" folder but in docker root has softlink with image folders.
+
+# nsenter -t <pid> -n  --> to get into network shell
+
+
+# nsenter -t <pid> -a  --> to get into docker shell  <===> docker attach os1

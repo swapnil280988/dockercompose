@@ -1,0 +1,17 @@
+# docker swarm init --advertise-addr 172.31.36.202    = Run on master/leader node
+# docker swarm join --token SWMTKN-1-3m9505zmcxl5kh8mhn8hlrix102nmj3qyn1r3e71rvk4rve5dq-3aembz1ug2ul6k4c2xlaf5udd 172.31.36.202:2377 = Run on worker/slave node
+
+[root@ip-172-31-36-202 ~]# docker node ls
+ID                            HOSTNAME                                       STATUS    AVAILABILITY   MANAGER STATUS   ENGINE VERSION
+vy4ixb8vp4xwxlek1b3300c9o     ip-172-31-33-218.ap-south-1.compute.internal   Ready     Active                          25.0.1
+p03d0rfwa816yrwhwmf0nqflk *   ip-172-31-36-202.ap-south-1.compute.internal   Ready     Active         Leader           25.0.0
+38yh7qunl4y91uf5g14wh5gya     ip-172-31-39-108.ap-south-1.compute.internal   Ready     Active                          24.0.5
+[root@ip-172-31-36-202 ~]#
+
+# docker service create --name os1 cc:latest
+# docker service ps os1
+# docker service ls
+# docker service scale os1=3
+
+
+
